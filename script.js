@@ -21,9 +21,14 @@ function addNote(){
     const textarea = note.querySelector("textarea");
 
     trashIcon.addEventListener("click",()=>{
-        note.remove();
-        saveNote();
-
+        var confirmation = confirm("Are you sure you want to delete this item?");
+        if (confirmation) {
+            note.remove();
+            saveNote();    
+            console.log("Item deleted.");
+        } else {
+            console.log("Deletion cancelled.");
+        }
     });
 
     saveIcon.addEventListener("click",saveNote);
